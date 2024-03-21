@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "flask-scrapper"
+version = "0.1.0"
+description = "jobscrapper with Flask, python"
+authors = ["Luceta <57941164+Luceta@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "flask_scrapper"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+flask = "^3.0.2"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
