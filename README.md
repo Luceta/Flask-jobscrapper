@@ -4,7 +4,7 @@
 Contains the basic boilerplate to test, lint, build and run a flask application with Poetry.
 
 ## Requirements
-- [docker](https://docs.docker.com/get-docker/)
+- [poetry](https://python-poetry.org/docs/#installation)
 
 # Setup
 
