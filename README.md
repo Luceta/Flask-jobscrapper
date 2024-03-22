@@ -22,8 +22,11 @@ $ poetry shell
 ```
 
 
+스크립트의 실행권한을 주고, 실행을 시킵니다.
+
 ```bash
-$ flask run
+$ chmod +x run-dev.sh
+$ ./run-dev.sh
 ```
 
 Start Flask Server
