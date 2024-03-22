@@ -25,8 +25,7 @@ $ poetry shell
 스크립트의 실행권한을 주고, 실행을 시킵니다.
 
 ```bash
-$ chmod +x run-dev.sh
-$ ./run-dev.sh
+$ make
 ```
 
 Start Flask Server
