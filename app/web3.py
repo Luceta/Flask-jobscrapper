@@ -27,7 +27,7 @@ def extract_jobs(url):
             "company": company,
             "location": location,
             "salary": salary,
-            "job_title": job_title,
+            "title": job_title,
             "job_link": job_link,
         }
 

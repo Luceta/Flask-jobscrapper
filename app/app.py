@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, send_file
+from itertools import chain
 from .scrapper import get_jobs as berlin_jobs
 from .wework import get_jobs as wwr_jobs
 from .web3 import get_jobs as web3_jobs
@@ -27,7 +28,8 @@ def search():
             berlin = berlin_jobs(keyword)
             web3 = web3_jobs(keyword)
             wwr = wwr_jobs(keyword)
-            jobs = berlin + wwr + web3
+            jobs = list(chain(berlin, wwr, web3))
+
             db[keyword] = jobs
     else:
         return redirect("/")
@@ -39,14 +41,16 @@ def search():
 @app.route("/export")
 def export():
     try:
-        word = request.args.get("keyword")
-        if not word:
-            raise Exception()
-        word = word.lower()
+        keyword = request.args.get("keyword")
+        word = keyword.lower()
+
+        if word == None:
+            return redirect("/")
+        if word not in db:
+            return redirect(f"/search?keyword={word}")
         jobs = db.get(word)
-        if not jobs:
-            raise Exception()
-        save_to_file(jobs)
-        return send_file("jobs.csv", as_attachment=True)
-    except:
+        save_to_file(word, jobs)
+        return send_file(f"{word}.csv", as_attachment=True)
+    except Exception as e:
+        print(e)
         return redirect("/")

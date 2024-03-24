@@ -29,7 +29,7 @@ def scrape_jobs(keyword):
                 "title": title,
                 "company": company,
                 "job_description": jd,
-                "url": url,
+                "job_link": url,
             }
 
             all_jobs.append(job_data)
