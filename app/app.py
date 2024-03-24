@@ -1,5 +1,6 @@
 from flask import Flask, render_template,request, redirect
 from .scrapper  import scrape_jobs,get_jobs
+from .wework import get_jobs as wejobs
 
 app = Flask(__name__)
 
@@ -20,8 +21,11 @@ def search():
         if from_db:
             jobs = from_db
         else:
-            jobs = get_jobs(keyword)
-            db[keyword] = jobs
+            # jobs = get_jobs(keyword)
+            we_jobs = wejobs(keyword)
+
+
+            db[keyword] = we_jobs
     else:
         return redirect("/")
-    return render_template("search.html",keyword=keyword,jobs=jobs,jobsCount =len(jobs) )
+    return render_template("search.html",keyword=keyword,jobs=we_jobs )
