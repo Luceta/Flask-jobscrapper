@@ -10,6 +10,8 @@ packages = [{include = "flask_scrapper"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 flask = "^3.0.2"
+beautifulsoup4 = "^4.12.3"
+requests = "^2.31.0"
 
 
 [tool.poetry.group.dev.dependencies]
